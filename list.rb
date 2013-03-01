@@ -33,8 +33,7 @@ class List
   end
 
   def complete(num)
-    if list_type ==  
-    bucket
+    
   end
 
   def bucket

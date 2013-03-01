@@ -1,10 +1,10 @@
 class Task
   attr_reader :body
-  attr_writer :status
+  attr_accessor :status
 
-  def initialize(body)
-    @status = :open
-    @body = body
+  def initialize(args)
+    @status = args[:status]
+    @body = args[:body]
   end
 end
 
