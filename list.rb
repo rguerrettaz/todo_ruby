@@ -27,11 +27,11 @@ class List
   end
 
   def delete(num)
-    
+    @master_list.each { |task| @master_list.delete(task) if task.temp_num == num }
   end
 
   def complete(num)
-    
+    @master_list.each { |task| task.status = :completed if task.temp_num == num }
   end
 
 end
