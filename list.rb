@@ -1,31 +1,29 @@
 class List
   def initialize
     @master_list = []
-    @completed_list = []
-    @open_list = []
   end
 
   def list(list_type)
     counter = 1
-    case list_type.downcase
-      when 'all' then @master_list.each do |task|
-        puts "#{counter}. #{task.body} - #{task.status.capitalize}"
-        counter += 1
+    if list_type.downcase == 'all'
+      @master_list.each do |task|
+        task.temp_num = counter
+        puts "#{task.temp_num}. #{task.body} - #{task.status.capitalize}"
       end
-      when 'completed' then @completed_list.each do |task|
-        puts "#{counter}. #{task.body} - Completed"
-        counter += 1
+      counter += 1
+    else
+      @master_list.each do |task|
+        if task.status == list_type
+          task.temp_num = counter 
+          puts "#{task.temp_num}. #{task.body} - #{task.status.capitalize}"
+        end
       end
-      when 'open' then @open_list.each do |task|
-        puts "#{counter}. #{task.body} - Open"
-        counter += 1
-      end
-    end  
+      counter += 1
+    end
   end
 
-  def add
-    @master_list << Task.new(body)
-    bucket
+  def add(args)
+    @master_list << Task.new(args)
   end
 
   def delete(num)
@@ -36,10 +34,4 @@ class List
     
   end
 
-  def bucket
-    @master_list.each do |task|
-      @completed_list << task if task.status == :completed
-      @open_list << task if task.status == :open
-    end  
-  end    
 end
