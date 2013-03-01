@@ -1,4 +1,4 @@
-require './task'
+
 
 class List
   def initialize
@@ -43,4 +43,6 @@ my_list = List.new
 my_list.add({:status => :open, :body => 'Take a shower'})
 my_list.add({:status => :open, :body => 'Take a shit'})
 my_list.add({:status => :open, :body => 'Wash your ass'})
+my_list.list('all')
+my_list.delete(2)
 my_list.list('all')
