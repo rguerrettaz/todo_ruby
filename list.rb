@@ -1,3 +1,5 @@
+require './task'
+
 class List
   def initialize
     @master_list = []
@@ -9,16 +11,16 @@ class List
       @master_list.each do |task|
         task.temp_num = counter
         puts "#{task.temp_num}. #{task.body} - #{task.status.capitalize}"
+        counter += 1
       end
-      counter += 1
     else
       @master_list.each do |task|
         if task.status == list_type
           task.temp_num = counter 
           puts "#{task.temp_num}. #{task.body} - #{task.status.capitalize}"
         end
+        counter += 1
       end
-      counter += 1
     end
   end
 
@@ -35,3 +37,10 @@ class List
   end
 
 end
+
+
+my_list = List.new
+my_list.add({:status => :open, :body => 'Take a shower'})
+my_list.add({:status => :open, :body => 'Take a shit'})
+my_list.add({:status => :open, :body => 'Wash your ass'})
+my_list.list('all')
