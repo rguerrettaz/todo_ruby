@@ -1,8 +1,8 @@
 require 'json'
 
-require_relative 'todo'
-require_relative 'list'
+require_relative 'todo_view'
 require_relative 'task'
+require_relative 'list'
 
 #
 # Example:
@@ -29,7 +29,10 @@ class TodoParser
   end
 end
 
-ToDoInterface.new
+data = TodoParser.read('data.json')
+my_list = List.new(data['list'])
+
+ToDoInterface.new(ARGV, my_list)
 
 =begin
 #How to use:

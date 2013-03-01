@@ -1,8 +1,7 @@
-
-
 class List
-  def initialize
+  def initialize(list)
     @master_list = []
+    list.each { |task_from_file| add(task_from_file) }
   end
 
   def list(list_type)
