@@ -3,7 +3,6 @@ require 'json'
 require_relative 'todo_view'
 require_relative 'task'
 require_relative 'list'
-
 #
 # Example:
 # TodoParser.each_entry('todo.txt') do |entry|
@@ -11,12 +10,11 @@ require_relative 'list'
 # end
  
 # Simple class for reading from the TODO file. Does not support writing.
-class TodoParser
-  @@path = "";
+class ToDoController
+  @@path = ""
 
   def self.read(path)
     @@path = path
-
     File.open(path, "r") do |file|
       JSON.parse(file.read)
     end
@@ -29,10 +27,11 @@ class TodoParser
   end
 end
 
-data = TodoParser.read('data.json')
+data = ToDoController.read('data.json')
 my_list = List.new(data['list'])
 
-ToDoInterface.new(ARGV, my_list)
+@view = ToDoView.new(ARGV, my_list)
+ToDoController.write(Hash[list: my_list.to_a])
 
 =begin
 #How to use:

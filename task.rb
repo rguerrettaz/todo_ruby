@@ -3,9 +3,9 @@ class Task
   attr_accessor :status, :temp_num
 
   def initialize(args)
-    @status = args[:status]
-    @body = args[:body]
-    @temp_num = nil
+    @status = args['status'] || 'open'
+    @body = args['body']
+    @temp_num = 0
   end
 end
 
