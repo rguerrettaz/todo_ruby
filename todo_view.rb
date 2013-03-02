@@ -12,6 +12,8 @@ class ToDoView
         my_list.complete(content.to_i)
       when 'list'
         my_list.list(content)
+      else
+        raise StandardError, 'Please enter one of: add, delete, complete, list'
     end
   end
 

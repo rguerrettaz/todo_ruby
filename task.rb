@@ -5,7 +5,6 @@ class Task
   def initialize(args)
     @status = args['status'] || 'open'
     @body = args['body']
-    @temp_num = 0
   end
 end
 

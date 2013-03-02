@@ -10,15 +10,13 @@ class List
     counter = 1
     if list_type.downcase == 'all'
       @master_list.each do |task|
-        task.temp_num = counter
-        puts "#{task.temp_num}. #{task.body} - #{task.status}"
+        puts "#{counter}. #{task.body} - #{task.status}"
         counter += 1
       end
     else
       @master_list.each do |task|
-        if task.status == list_type
-          task.temp_num = counter 
-          puts "#{task.temp_num}. #{task.body} - #{task.status}"
+        if task.status == list_type 
+          puts "#{counter}. #{task.body} - #{task.status}"
         end
         counter += 1
       end
